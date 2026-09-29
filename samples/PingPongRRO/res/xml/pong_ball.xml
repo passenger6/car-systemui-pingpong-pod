@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2026 Daniel Georg
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!--
+  The ball: a task with a real app inside. `idle` is where it rests; `in_play` is the flight
+  variant the pod stamps every frame (its bounds here are the first frame's, the pod rewrites
+  them before each serve); `celebrate` is the XML's own reaction to a win. It is the only
+  resize, so the app relayouts once.
+-->
+<TaskPanel id="pong_ball" defaultVariant="@id/idle" displayId="0" role="@string/default_config" controller="@xml/pong_ball_controller">
+    <Variant id="@+id/base">
+        <Layer layer="2"/>
+        <Focus onTransition="false"/>
+        <Corner radius="@dimen/pong_ball_corner"/>
+    </Variant>
+    <Variant id="@+id/idle" parent="@id/base">
+        <Visibility isVisible="true"/>
+        <Bounds left="42.31%" top="36.99%" width="@dimen/pong_ball_size" height="@dimen/pong_ball_size"/>
+    </Variant>
+    <Variant id="@+id/in_play" parent="@id/idle">
+        <Layer layer="24"/>
+        <Bounds left="42.31%" top="36.99%" width="@dimen/pong_ball_size" height="@dimen/pong_ball_size"/>
+    </Variant>
+    <Variant id="@+id/celebrate" parent="@id/idle">
+        <Corner radius="@dimen/pong_ball_big_corner"/>
+        <Bounds left="44.02%" top="39.37%" width="@dimen/pong_ball_big" height="@dimen/pong_ball_big"/>
+    </Variant>
+    <Restart policy="DEFAULT" maxRetry="3"/>
+    <Transitions>
+        <Transition fromVariant="@id/idle" toVariant="@id/in_play" duration="0" onEvent="_Pong_Serve"/>
+        <Transition fromVariant="@id/in_play" toVariant="@id/idle" duration="300" onEvent="_Pong_Point_left"/>
+        <Transition fromVariant="@id/in_play" toVariant="@id/idle" duration="300" onEvent="_Pong_Point_right"/>
+        <Transition fromVariant="@id/idle" toVariant="@id/celebrate" duration="400" onEvent="_Pong_Win_left"/>
+        <Transition fromVariant="@id/idle" toVariant="@id/celebrate" duration="400" onEvent="_Pong_Win_right"/>
+        <Transition fromVariant="@id/celebrate" toVariant="@id/idle" duration="400" delay="600" onEvent="_System_OnAnimationEndEvent" onEventTokens="panelId=pong_ball;panelToVariantId=celebrate"/>
+    </Transitions>
+</TaskPanel>

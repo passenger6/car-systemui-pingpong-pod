@@ -1,0 +1,10 @@
+<SystemBar id="top_bar_right_panel" defaultVariant="@id/open" displayId="0" type="status" barZOrder="5" hideForKeyboard="false">
+    <Variant id="@+id/base">
+        <Layer layer="7"/>
+        <Bounds top="0px" right="96%" width="636px" height="136px"/>
+    </Variant>
+    <Variant id="@+id/open" parent="@id/base">
+        <Visibility isVisible="true"/>
+        <Bounds top="0px" right="62.42%" width="636px" height="136px"/>
+    </Variant>
+</SystemBar>

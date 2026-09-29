@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2026 Daniel Georg
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <!-- Every value here is overridable by an RRO targeting com.android.systemui. -->
+
+    <!-- The paddle Jev plays. Any other paddle is moved by touch. -->
+    <string name="pong_jev_paddle" translatable="false">pong_right_paddle</string>
+    <!-- Jev model and endpoint, https://docs.typesafe.ai/introduction/quickstart. The endpoint
+         must be https: the key travels in a header. -->
+    <string name="pong_jev_model" translatable="false">jev-latest</string>
+    <string name="pong_jev_endpoint" translatable="false">https://api.typesafe.ai/v1/systemone</string>
+    <!-- The apps inside the ball and the app-paddles; referenced by their controller XML. -->
+    <string name="pong_ball_component" translatable="false">com.android.deskclock/com.android.deskclock.DeskClock</string>
+    <string name="pong_left_paddle_component" translatable="false">com.android.car.dialer/com.android.car.dialer.ui.TelecomActivity</string>
+    <string name="pong_right_paddle_component" translatable="false">com.android.car.radio/com.android.car.radio.RadioActivity</string>
+
+    <!-- Court labels -->
+    <string name="pong_label_you">YOU</string>
+    <string name="pong_label_jev">JEV</string>
+
+    <!-- Court status line -->
+    <string name="pong_status_waiting_parts">Waiting for panels: <xliff:g id="parts" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_panel_missing">Panel not in the pool: <xliff:g id="panel" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_paddles_same_side">Both paddles are on the same half of the court</string>
+    <string name="pong_status_court_no_bounds">The court has no bounds</string>
+    <string name="pong_status_waiting_ball_app">Waiting for the app inside the ball</string>
+    <string name="pong_status_waiting_paddle_app">Waiting for the app inside <xliff:g id="panel" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_ball_hidden">Paused: the ball is hidden</string>
+    <string name="pong_status_serve_not_reachable">No _Pong_Serve transition from <xliff:g id="variant" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_no_flight_variant">_Pong_Serve did not reach the in_play variant</string>
+    <string name="pong_status_serving">Serving…</string>
+    <string name="pong_status_in_play">In play</string>
+    <string name="pong_status_win">Game to <xliff:g id="side" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_jev_idle">Jev: waiting for the ball</string>
+    <string name="pong_status_jev_no_key">Jev: no key, see the README</string>
+    <string name="pong_status_jev_failed">Jev: <xliff:g id="reason" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$s</xliff:g></string>
+    <string name="pong_status_jev_answer">Jev <xliff:g id="latency" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%1$d</xliff:g> ms · confidence <xliff:g id="confidence" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%2$.2f</xliff:g></string>
+</resources>

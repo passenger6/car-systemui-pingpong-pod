@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2026 Daniel Georg
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The game's four panels, plus the reference layout's two navigation bars and its app
+         grid, so the emulator stays usable while the court is up. Declared twice: the flagged
+         form is the one a build with enable_ext_panel_updates reads, the plain one is the
+         fallback the resource compiler needs. -->
+    <array name="window_states" android:featureFlag="com.android.car.scalableui.enable_ext_panel_updates">
+        <item>@xml/pong_court</item>
+        <item>@xml/pong_ball</item>
+        <item>@xml/pong_left_paddle</item>
+        <item>@xml/pong_right_paddle</item>
+        <item>@xml/left</item>
+        <item>@xml/right</item>
+        <item>@xml/app_grid_panel</item>
+        <item>@xml/top_bar_right_panel</item>
+    </array>
+
+    <array name="window_states">
+        <item>@xml/pong_court</item>
+        <item>@xml/pong_ball</item>
+        <item>@xml/pong_left_paddle</item>
+        <item>@xml/pong_right_paddle</item>
+        <item>@xml/left</item>
+        <item>@xml/right</item>
+        <item>@xml/app_grid_panel</item>
+        <item>@xml/top_bar_right_panel</item>
+    </array>
+
+    <!-- The classic system bar windows stay off: the bars above are Scalable UI panels. -->
+    <bool name="config_enableTopSystemBar" android:featureFlag="com.android.car.scalableui.enable_ext_panel_updates">false</bool>
+    <bool name="config_enableBottomSystemBar" android:featureFlag="com.android.car.scalableui.enable_ext_panel_updates">false</bool>
+    <bool name="config_enableLeftSystemBar" android:featureFlag="com.android.car.scalableui.enable_ext_panel_updates">false</bool>
+    <bool name="config_enableRightSystemBar" android:featureFlag="com.android.car.scalableui.enable_ext_panel_updates">false</bool>
+
+    <!-- Scalable UI Editor metadata, read by nothing on the device: the display this layout was
+         drawn for (the sdk_car_dewd_x86_64 emulator, 2560x1440 at 140 dpi). -->
+    <dimen name="display_0_width">2560px</dimen>
+    <dimen name="display_0_height">1440px</dimen>
+</resources>

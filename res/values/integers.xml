@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2026 Daniel Georg
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <!-- Ball speed at serve and its ceiling, dp per second. -->
+    <integer name="pong_ball_speed_dp">600</integer>
+    <integer name="pong_ball_max_speed_dp">1600</integer>
+    <!-- Speed gain per paddle hit, percent: 104 = 4 % faster after every return. -->
+    <integer name="pong_ball_speed_gain_percent">104</integer>
+    <!-- Largest angle a paddle edge sends the ball off at, degrees from horizontal. -->
+    <integer name="pong_hit_angle_degrees">60</integer>
+    <!-- How fast Jev's paddle travels to the lane it chose, dp per second. -->
+    <integer name="pong_paddle_speed_dp">900</integer>
+    <!-- Pause between a point and the next serve. -->
+    <integer name="pong_serve_delay_ms">1200</integer>
+    <!-- Shortest interval between two Jev questions while the ball approaches. -->
+    <integer name="pong_jev_interval_ms">200</integer>
+    <!-- A question older than this is given up on even if its HTTP call never returns, e.g. on
+         a half-open socket. Must stay well above PongJevClient's CONNECT_TIMEOUT_MS +
+         READ_TIMEOUT_MS. -->
+    <integer name="pong_jev_stale_after_ms">8000</integer>
+    <!-- Horizontal bands the court is cut into for Jev's answer (2..255). -->
+    <integer name="pong_lanes">12</integer>
+    <!-- Points that win a game. -->
+    <integer name="pong_win_score">11</integer>
+</resources>

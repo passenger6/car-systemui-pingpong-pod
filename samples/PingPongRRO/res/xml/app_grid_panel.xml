@@ -1,0 +1,24 @@
+<TaskPanel id="app_grid_panel" defaultVariant="@id/closed" displayId="0" role="@string/com_android_car_carlauncher_app_grid_activity_componentName" controller="@xml/app_grid_panel_controller">
+    <Variant id="@+id/base">
+        <Layer layer="6"/>
+    </Variant>
+    <Variant id="@+id/open" parent="@id/base">
+        <Alpha alpha="1"/>
+        <Visibility isVisible="true"/>
+        <Corner topLeftRadius="48px" topRightRadius="48px" bottomLeftRadius="0px" bottomRightRadius="0px"/>
+        <Bounds left="28.15%" top="58.48%" right="66.15%" bottom="99.99%"/>
+    </Variant>
+    <Variant id="@+id/closed">
+        <Alpha alpha="1"/>
+        <Visibility isVisible="false"/>
+        <Layer layer="6"/>
+        <Focus onTransition="false"/>
+        <Corner topLeftRadius="48px" topRightRadius="48px" bottomLeftRadius="0px" bottomRightRadius="0px"/>
+        <Bounds left="28.15%" top="100.01%" right="66.15%" bottom="141.52%"/>
+    </Variant>
+    <Transitions>
+        <Transition fromVariant="@id/closed" toVariant="@id/open" duration="400" interpolator="@android:anim/anticipate_overshoot_interpolator" onEvent="_System_TaskOpenEvent" onEventTokens="panelId=app_grid_panel"/>
+        <Transition toVariant="@id/closed" onEvent="_System_OnHomeEvent"/>
+        <Transition toVariant="@id/closed" onEvent="_System_TaskOpenEvent" onEventTokens="panelId=pong_ball"/>
+    </Transitions>
+</TaskPanel>

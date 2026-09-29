@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2026 Daniel Georg
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!--
+  A drawn paddle. Which side it plays is read off its position: left of the court's middle =
+  left. Move it with a finger on the bar, or anywhere on the left half of the court.
+
+  The reaction below is defined by the XML: on the right's win this paddle leaves the court
+  and comes back once that animation has ended. While it is in `gone` or animating, the pod
+  leaves it alone, because a paddle is driven only in the variant the match found it in.
+-->
+<DecorPanel id="pong_left_paddle" defaultVariant="@id/open" displayId="0"
+            controller="@xml/pong_left_paddle_controller">
+    <Variant id="@+id/base">
+        <Layer layer="3"/>
+    </Variant>
+    <Variant id="@+id/open" parent="@id/base">
+        <Visibility isVisible="true"/>
+        <Bounds left="5.92%" top="40%" width="@dimen/pong_paddle_width" height="@dimen/pong_paddle_height"/>
+    </Variant>
+    <Variant id="@+id/gone" parent="@id/open">
+        <Bounds left="-8%" top="40%" width="@dimen/pong_paddle_width" height="@dimen/pong_paddle_height"/>
+    </Variant>
+    <Transitions>
+        <Transition fromVariant="@id/open" toVariant="@id/gone" onEvent="_Pong_Win_right" duration="400"/>
+        <Transition fromVariant="@id/gone" toVariant="@id/open" onEvent="_System_OnAnimationEndEvent"
+                    onEventTokens="panelId=pong_left_paddle;panelToVariantId=gone" delay="800" duration="400"/>
+    </Transitions>
+</DecorPanel>
